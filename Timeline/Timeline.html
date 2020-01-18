@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en" >
+  <head>
+    <meta charset="utf-8">
+    <title>Raid Buff Timeline</title>
+    <style type="text/css">
+    body {
+      min-height: 100%;
+    }
+    .draggable {
+      touch-action: none;
+      user-select: none;
+    }
+    .column {
+      min-height: 100%;
+      position: fixed;
+      top: 0;
+      overflow-x: hidden;
+    }
+    .left {
+      left: 0;
+      width: 10%;
+    }
+    .right {
+      right: 0;
+      width: 90%;
+      display: flex;
+      flex-flow: row wrap;
+      justify-content: space-around;
+    }
+    .party {
+      width: calc(100% / 8);
+      min-height: 100%;
+      top: 0;
+      margin: 0;
+      padding: 0;
+      border: double black;
+      border-top-style: none;
+      border-bottom-style: none;
+      box-sizing: border-box;
+    }
+    .tank {
+      background-color: #aaaacc;
+    }
+    .healer {
+      background-color: #aaccaa;
+    }
+    .dps {
+      background-color: #ccaaaa;
+    }
+    </style>
+  </head>
+  <body>
+    <div class="column left" style="background-color:#aaa;"></div>
+    <div class="column right" style="background-color:#bbb;">
+      <div class="tank party"></div>
+      <div class="tank party"></div>
+      <div class="healer party"></div>
+      <div class="healer party"></div>
+      <div class="dps party">
+        <div class="draggable">Draggable Element 1</div>
+      </div>
+      <div class="dps party"></div>
+      <div class="dps party"></div>
+      <div class="dps party">
+        <div class="draggable">Draggable Element 2</div>
+      </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/interactjs/dist/interact.min.js"></script>
+    <script>
+      const position = { x: 0, y: 0 };
+
+      interact('.draggable').draggable({
+        listeners: {
+          start (event) {
+            console.log(event.type, event.target)
+          },
+          move (event) {
+            position.x += event.dx
+            position.y += event.dy
+
+            event.target.style.transform =
+              `translate(${position.x}px, ${position.y}px)`
+          },
+        },
+        startAxis: 'xy',
+        lockAxis: 'y'
+      });
+    </script>
+  </body>
+</html>

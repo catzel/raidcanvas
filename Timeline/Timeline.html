@@ -6,38 +6,54 @@
     <style type="text/css">
     body {
       min-height: 100%;
+      overflow-y: auto;
     }
     .draggable {
       touch-action: none;
       user-select: none;
     }
-    .column {
-      min-height: 100%;
+    .header {
+      min-height: 5%;
       position: fixed;
       top: 0;
       overflow-x: hidden;
     }
+    .column {
+      min-height: calc(95vh);
+      position: fixed;
+      top: 5%;
+      overflow-x: hidden;
+      scrollbar-width: none;
+    }
+    .scrollcontent {
+      overflow-y: hidden;
+    }
     .left {
       left: 0;
       width: 10%;
+      background-color: #aaa;
     }
     .right {
       right: 0;
-      width: 90%;
+      width: 100%;
+      background-color: #bbb;
       display: flex;
       flex-flow: row wrap;
-      justify-content: space-around;
+      justify-content: space-between;
+      align-items: stretch;
     }
     .party {
-      width: calc(100% / 8);
-      min-height: 100%;
-      top: 0;
+      width: calc(100% / 9);
       margin: 0;
       padding: 0;
-      border: double black;
-      border-top-style: none;
+      border: ridge black;
       border-bottom-style: none;
+      border-top-style: none;
       box-sizing: border-box;
+    }
+    .label {
+      border-top-style: ridge;
+      border-bottom-style: ridge;
     }
     .tank {
       background-color: #aaaacc;
@@ -51,19 +67,56 @@
     </style>
   </head>
   <body>
-    <div class="column left" style="background-color:#aaa;"></div>
-    <div class="column right" style="background-color:#bbb;">
-      <div class="tank party"></div>
-      <div class="tank party"></div>
-      <div class="healer party"></div>
-      <div class="healer party"></div>
-      <div class="dps party">
-        <div class="draggable">Draggable Element 1</div>
+    <div class="header right">
+      <div class="label party">Timer</div>
+      <div class="tank party label">
+        <div> Tank Header </div>
       </div>
-      <div class="dps party"></div>
-      <div class="dps party"></div>
-      <div class="dps party">
-        <div class="draggable">Draggable Element 2</div>
+      <div class="tank party label">
+        <div> Tank Header </div>
+      </div>
+      <div class="healer party label">
+        <div> Healer Header </div>
+      </div>
+      <div class="healer party label">
+        <div> Healer Header </div>
+      </div>
+      <div class="dps party label">
+        <div> DPS Header </div>
+      </div>
+      <div class="dps party label">
+        <div> DPS Header </div>
+      </div>
+      <div class="dps party label">
+        <div> DPS Header </div>
+      </div>
+      <div class="dps party label">
+        <div> DPS Header </div>
+      </div>
+    </div>
+    <div class="scrollcontent">
+      <div class="column right">
+        <div class="party">
+          This is the timer column.
+        </div>
+        <div class="tank party">
+        </div>
+        <div class="tank party">
+        </div>
+        <div class="healer party">
+        </div>
+        <div class="healer party">
+        </div>
+        <div class="dps party">
+          <div class="draggable">Draggable Element 1</div>
+        </div>
+        <div class="dps party">
+        </div>
+        <div class="dps party">
+        </div>
+        <div class="dps party">
+          <div class="draggable">Draggable Element 2</div>
+        </div>
       </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/interactjs/dist/interact.min.js"></script>

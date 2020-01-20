@@ -7,6 +7,7 @@
     body {
       min-height: 100%;
       overflow-y: auto;
+      font-family: "Candara";
     }
     .draggable {
       touch-action: none;
@@ -20,10 +21,11 @@
     }
     .column {
       min-height: calc(95vh);
-      position: fixed;
+      position: absolute;
       top: 5%;
       overflow-x: hidden;
       scrollbar-width: none;
+      z-index: -100000;
     }
     .scrollcontent {
       overflow-y: hidden;
@@ -51,9 +53,16 @@
       border-top-style: none;
       box-sizing: border-box;
     }
+    .time {
+      padding: 10px;
+      padding-top: 5px;
+      padding-bottom: 5px;
+      text-align: right;
+    }
     .label {
       border-top-style: ridge;
       border-bottom-style: ridge;
+      text-align: center;
     }
     .tank {
       background-color: #aaaacc;
@@ -97,7 +106,7 @@
     <div class="scrollcontent">
       <div class="column right">
         <div class="party">
-          This is the timer column.
+          <div id="timer" class="time"></div>
         </div>
         <div class="tank party">
         </div>
@@ -139,6 +148,20 @@
         startAxis: 'xy',
         lockAxis: 'y'
       });
+
+      var timeInSeconds = "-00:15<br><br><br><br><br>-00:10<br><br><br><br><br>-00:05<br>-00:04<br>-00:03<br>-00:02<br>-00:01<br>00:00";
+
+      for(var i = 1; i <= 1080; i++) {
+        timeInSeconds += "<br>";
+        if (i%5 == 0) {
+          date = new Date(i * 1000);
+          minutes = date.getUTCMinutes();
+          seconds = date.getSeconds();
+          timeInSeconds += minutes.toString().padStart(2, '0') + ":" + seconds.toString().padStart(2, '0');
+        }
+      }
+
+      document.getElementById("timer").innerHTML = timeInSeconds;
     </script>
   </body>
 </html>

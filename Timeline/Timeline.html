@@ -12,6 +12,7 @@
     .draggable {
       touch-action: none;
       user-select: none;
+      position: absolute;
     }
     .header {
       min-height: 6%;
@@ -83,6 +84,19 @@
       align-items: flex-end;
       justify-content: space-around;
     }
+    .cooldownTiming {
+      height: 100%;
+      display: flex;
+    }
+    div.cooldownTiming>div:nth-of-type(odd) {
+      background: rgba(200, 200, 200, 0.4);
+    }
+    .cooldownTimingColumn {
+      height: 100%;
+      width: fill-available; /* etc */
+      width: -moz-available; /* moz */
+      width: -webkit-fill-available; /* chrome */
+    }
     .headericon {
       display: inline;
       height: 1.3em;
@@ -153,32 +167,63 @@
           <div id="timer" class="time"></div>
         </div>
         <div class="tank party">
+          <div id="tankOne" class="cooldownTiming">
+            <div id="tankOneOne" ondblclick="columnDblclick(event, this)" class="cooldownTimingColumn"></div>
+            <div id="tankOneTwo" ondblclick="columnDblclick(event, this)" class="cooldownTimingColumn"></div>
+            <div id="tankOneThree" ondblclick="columnDblclick(event, this)" class="cooldownTimingColumn"></div>
+            <div id="tankOneFour" ondblclick="columnDblclick(event, this)" class="cooldownTimingColumn"></div>
+            <div id="tankOneFive" ondblclick="columnDblclick(event, this)" class="cooldownTimingColumn"></div>
+            <div id="tankOneSix" ondblclick="columnDblclick(event, this)" class="cooldownTimingColumn"></div>
+            <div id="tankOneSeven" ondblclick="columnDblclick(event, this)" class="cooldownTimingColumn"></div>
+            <div id="tankOneEight" ondblclick="columnDblclick(event, this)" class="cooldownTimingColumn"></div>
+          </div>
         </div>
         <div class="tank party">
+          <div id="tankTwo" class="cooldownTiming">
+            <div class="cooldownTimingColumn"></div>
+            <div class="cooldownTimingColumn"></div>
+            <div class="cooldownTimingColumn"></div>
+            <div class="cooldownTimingColumn"></div>
+            <div class="cooldownTimingColumn"></div>
+            <div class="cooldownTimingColumn"></div>
+            <div class="cooldownTimingColumn"></div>
+          </div>
         </div>
         <div class="healer party">
         </div>
         <div class="healer party">
         </div>
         <div class="dps party">
-          <div class="draggable" ondblclick="dragDblclick(this)">Draggable Element 1</div>
-          <div class="draggable" ondblclick="dragDblclick(this)">Draggable Element 3</div>
+          <div class="draggable" oncontextmenu="dragRightClick(this); return false;">Draggable Element 1</div>
+          <div class="draggable" oncontextmenu="dragRightClick(this); return false;">Draggable Element 3</div>
         </div>
         <div class="dps party">
         </div>
         <div class="dps party">
         </div>
         <div class="dps party">
-          <div class="draggable" ondblclick="dragDblclick(this)">Draggable Element 2</div>
+          <div class="draggable" oncontextmenu="dragRightClick(this); return false;">Draggable Element 2</div>
         </div>
       </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/interactjs/dist/interact.min.js"></script>
     <script>
-
-      function dragDblclick(el) {
+      function dragRightClick(el) {
         console.log("you did a double click", el);
         el.parentNode.removeChild(el);
+      }
+
+      function columnDblclick(ev, el) {
+        console.log("you did a column douyble click", ev, el);
+        var frag = document.createDocumentFragment();
+        temp = document.createElement('div');
+        temp.className = "draggable";
+        temp.style = "transform: translate(0px, " + ev.layerY + "px);";
+        temp.setAttribute('data-x', 0);
+        temp.setAttribute('data-y', ev.layerY);
+        temp.innerHTML = "1";
+        temp.oncontextmenu = function(){ dragRightClick(this); return false; };
+        el.appendChild(temp);
       }
 
       interact('.draggable').draggable({
@@ -212,6 +257,18 @@
 
       for(var i = 1; i <= 1080; i++) {
         timeInSeconds += "<br>";
+        if (i == 140) {
+          timeInSeconds += "<div style='position: absolute; left:0px; background: black; height: 1px; width: 100%;'></div>"; // LL Enrage
+        }
+        else if (i == 364) {
+          timeInSeconds += "<div style='position: absolute; left:0px; background: black; height: 1px; width: 100%;'></div>"; // CC/BJ Enrage
+        }
+        else if (i == 600) { // estimate
+          timeInSeconds += "<div style='position: absolute; left:0px; background: black; height: 1px; width: 100%;'></div>"; // Prime Enrage
+        }
+        else if (i == 990) { // estimate
+          timeInSeconds += "<div style='position: absolute; left:0px; background: black; height: 1px; width: 100%;'></div>"; // Perf Enrage
+        }
         if (i%5 == 0) {
           date = new Date(i * 1000);
           minutes = date.getUTCMinutes();

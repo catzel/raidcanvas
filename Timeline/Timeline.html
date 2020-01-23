@@ -14,15 +14,15 @@
       user-select: none;
     }
     .header {
-      min-height: 5%;
+      min-height: 6%;
       position: fixed;
       top: 0;
       overflow-x: hidden;
     }
     .column {
-      min-height: calc(95vh);
+      min-height: calc(94vh);
       position: absolute;
-      top: 5%;
+      top: 6%;
       overflow-x: hidden;
       scrollbar-width: none;
       z-index: -100000;
@@ -63,6 +63,9 @@
       border-top-style: ridge;
       border-bottom-style: ridge;
       text-align: center;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
     }
     .tank {
       background-color: #aaaacc;
@@ -73,19 +76,51 @@
     .dps {
       background-color: #ccaaaa;
     }
+    .cooldowns {
+      bottom: 0;
+      display: flex;
+      flex: 1;
+      align-items: flex-end;
+      justify-content: space-around;
+    }
+    .headericon {
+      display: inline;
+      height: 1.3em;
+    }
+    .labelname {
+      width: fill-available; /* etc */
+      width: -moz-available; /* moz */
+      width: -webkit-fill-available; /* chrome */
+    }
     </style>
   </head>
   <body>
     <div class="header right">
       <div class="label party">Timer</div>
       <div class="tank party label">
-        <div style="display: inline; vertical-align: middle;"><img src="./icons/GNB/job.png" alt="GNB" style="display: inline; width: 1em;" ></div>
-        <div style="display: inline;"> Gunbreaker </div>
-        <div> and these are my cooldowns </div>
+        <div class="labelname"><img src="./icons/GNB/job.png" alt="GNB" style="display: inline; width: 1em;" > Gunbreaker </div>
+        <div class="cooldowns">
+          <img src="./icons/GNB/aurora.png" alt="Aurora" class=headericon >
+          <img src="./icons/GNB/camouflage.png" alt="Camouflage" class=headericon >
+          <img src="./icons/GNB/heart_of_light.png" alt="Heart of Light" class=headericon >
+          <img src="./icons/GNB/heart_of_stone.png" alt="Heart of Stone" class=headericon >
+          <img src="./icons/GNB/nebula.png" alt="Nebula" class=headericon >
+          <img src="./icons/GNB/rampart.png" alt="Rampart" class=headericon >
+          <img src="./icons/GNB/reprisal.png" alt="Reprisal" class=headericon >
+          <img src="./icons/GNB/superbolide.png" alt="Superbolide" class=headericon >
+        </div>
       </div>
       <div class="tank party label">
-        <div style="display: inline; vertical-align: middle;"><img src="./icons/PLD/job.png" alt="PLD" style="display: inline; width: 1em;" ></div>
-        <div style="display: inline;"> Paladin </div>
+        <div class="labelname"><img src="./icons/PLD/job.png" alt="PLD" style="display: inline; width: 1em;" > Paladin </div>
+        <div class="cooldowns">
+          <img src="./icons/PLD/cover.png" alt="Cover" class=headericon >
+          <img src="./icons/PLD/divine_veil.png" alt="Divine Veil" class=headericon >
+          <img src="./icons/PLD/hallowed_ground.png" alt="Hallowed Ground" class=headericon >
+          <img src="./icons/PLD/passage_of_arms.png" alt="Passage of Arms" class=headericon >
+          <img src="./icons/PLD/rampart.png" alt="Rampart" class=headericon >
+          <img src="./icons/PLD/reprisal.png" alt="Reprisal" class=headericon >
+          <img src="./icons/PLD/sentinal.png" alt="Sentinal" class=headericon >
+        </div>
       </div>
       <div class="healer party label">
         <div style="display: inline; vertical-align: middle;"><img src="./icons/AST/job.png" alt="AST" style="display: inline; width: 1em;" ></div>

@@ -144,7 +144,12 @@
       <div class="healer party label">
         <div class="labelname"><img src="./icons/AST/job.png" alt="AST" style="display: inline; width: 1em;" > Astrologian </div>
         <div class="cooldowns">
+          <img src="./icons/AST/collective_unconscious.png" alt="Collective Unconscious" class=headericon >
+          <img src="./icons/AST/divination.png" alt="Divination" class=headericon >
           <img src="./icons/AST/earthly_star.png" alt="Earthly Star" class=headericon >
+          <img src="./icons/AST/horoscope.png" alt="Horoscope" class=headericon >
+          <img src="./icons/AST/neutral_sect.png" alt="Neutral Sect" class=headericon >
+          <img src="./icons/AST/synastry.png" alt="Synastry" class=headericon >
         </div>
       </div>
       <div class="healer party label">
@@ -206,6 +211,11 @@
         <div class="healer party">
           <div id="healerOne" class="cooldownTiming">
             <div id="healerOneOne" ondblclick="columnDblclick(event, this)" class="cooldownTimingColumn"></div>
+            <div id="healerOneTwo" ondblclick="columnDblclick(event, this)" class="cooldownTimingColumn"></div>
+            <div id="healerOneThree" ondblclick="columnDblclick(event, this)" class="cooldownTimingColumn"></div>
+            <div id="healerOneFour" ondblclick="columnDblclick(event, this)" class="cooldownTimingColumn"></div>
+            <div id="healerOneFive" ondblclick="columnDblclick(event, this)" class="cooldownTimingColumn"></div>
+            <div id="healerOneSix" ondblclick="columnDblclick(event, this)" class="cooldownTimingColumn"></div>
           </div>
         </div>
         <div class="healer party">
@@ -246,6 +256,7 @@
         var lineSize = 1.19; // yuck
         var durationColor = "#F89B1F" //"#F89B1F";
         var durationTwoColor = "#E86A1C";
+        var durationThreeColor = "#B56051";
         var cooldownColor = "#817F7F"; // B56051
         var borderColor = "#817F7F";
 
@@ -346,6 +357,49 @@
               + cooldownColor + ' '+ (lineSize * cooldown) +'em); height: ' + (lineSize * cooldown) + 'em;"><img src="./icons/PLD/sentinal.png" alt="Sentinal" class=headericon ></div>';
             break;
 
+          // AST
+          case "healerOneOne":
+            var duration = 18;
+            var durationTwo = 18 + 15;
+            var durationThree = 18 + 20;
+            var cooldown = 60;
+            temp.innerHTML = '<div style="background: linear-gradient(180deg, ' + durationColor + ', ' + durationColor + ' '+ (lineSize * duration) +'em, ' + durationTwoColor + ' ' + (lineSize * duration) + 'em, '  + durationTwoColor + ' ' + (lineSize * durationTwo) + 'em, '
+              + durationThreeColor + ' ' + (lineSize * durationTwo) + 'em, '  + durationThreeColor + ' ' + (lineSize * durationThree) + 'em, '
+              + cooldownColor + ' ' + (lineSize * durationThree) + 'em, ' + cooldownColor + ' '+ (lineSize * cooldown) +'em); height: ' + (lineSize * cooldown) + 'em;"><img src="./icons/AST/collective_unconscious.png" alt="Collective Unconscious" class=headericon ></div>';
+            break;
+          case "healerOneTwo":
+            var duration = 15;
+            var cooldown = 120;
+            temp.innerHTML = '<div style="background: linear-gradient(180deg, ' + durationColor + ', ' + durationColor + ' '+ (lineSize * duration) +'em, ' + cooldownColor + ' ' + (lineSize * duration) + 'em, '
+              + cooldownColor + ' '+ (lineSize * cooldown) +'em); height: ' + (lineSize * cooldown) + 'em;"><img src="./icons/AST/divination.png" alt="Divination" class=headericon ></div>';
+            break;
+          case "healerOneThree":
+            var duration = 10;
+            var durationTwo = 10 + duration;
+            var cooldown = 60;
+            temp.innerHTML = '<div style="background: linear-gradient(180deg, ' + durationColor + ', ' + durationColor + ' '+ (lineSize * duration) +'em, ' + durationTwoColor + ' ' + (lineSize * duration) + 'em, '  + durationTwoColor + ' ' + (lineSize * durationTwo) + 'em, '
+              + cooldownColor + ' ' + (lineSize * durationTwo) + 'em, ' + cooldownColor + ' '+ (lineSize * cooldown) +'em); height: ' + (lineSize * cooldown) + 'em;"><img src="./icons/AST/earthly_star.png" alt="Earthly Star" class=headericon ></div>';
+            break;
+          case "healerOneFour":
+            var duration = 10;
+            var durationTwo = 30 + duration;
+            var cooldown = 60;
+            temp.innerHTML = '<div style="background: linear-gradient(180deg, ' + durationColor + ', ' + durationColor + ' '+ (lineSize * duration) +'em, ' + durationTwoColor + ' ' + (lineSize * duration) + 'em, '  + durationTwoColor + ' ' + (lineSize * durationTwo) + 'em, '
+              + cooldownColor + ' ' + (lineSize * durationTwo) + 'em, ' + cooldownColor + ' '+ (lineSize * cooldown) +'em); height: ' + (lineSize * cooldown) + 'em;"><img src="./icons/AST/horoscope.png" alt="Horoscope" class=headericon ></div>';
+            break;
+          case "healerOneFive":
+            var duration = 20;
+            var cooldown = 120;
+            temp.innerHTML = '<div style="background: linear-gradient(180deg, ' + durationColor + ', ' + durationColor + ' '+ (lineSize * duration) +'em, ' + cooldownColor + ' ' + (lineSize * duration) + 'em, '
+              + cooldownColor + ' '+ (lineSize * cooldown) +'em); height: ' + (lineSize * cooldown) + 'em;"><img src="./icons/AST/neutral_sect.png" alt="Neutral Sect" class=headericon ></div>';
+            break;
+          case "healerOneSix":
+            var duration = 20;
+            var cooldown = 120;
+            temp.innerHTML = '<div style="background: linear-gradient(180deg, ' + durationColor + ', ' + durationColor + ' '+ (lineSize * duration) +'em, ' + cooldownColor + ' ' + (lineSize * duration) + 'em, '
+              + cooldownColor + ' '+ (lineSize * cooldown) +'em); height: ' + (lineSize * cooldown) + 'em;"><img src="./icons/AST/synastry.png" alt="Synastry" class=headericon ></div>';
+            break;
+
           // WHM
           case "healerTwoOne":
             var duration = 0;
@@ -383,7 +437,7 @@
             temp.innerHTML = '<div style="background: linear-gradient(180deg, ' + durationColor + ', ' + durationColor + ' '+ (lineSize * duration) +'em, ' + cooldownColor + ' ' + (lineSize * duration) + 'em, '
               + cooldownColor + ' '+ (lineSize * cooldown) +'em); height: ' + (lineSize * cooldown) + 'em;"><img src="./icons/WHM/tetragrammaton.png" alt="Tetragrammaton" class=headericon ></div>';
             break;
-            
+
           default:
             temp.innerHTML = '<img src="./icons/GNB/aurora.png" alt="Aurora" class=headericon >';
             break;

@@ -13,6 +13,10 @@
       touch-action: none;
       user-select: none;
       position: absolute;
+      width: calc(100%);
+      display: flex;
+      align-content: center;
+      justify-content: center;
     }
     .header {
       min-height: 6%;
@@ -96,6 +100,7 @@
       width: fill-available; /* etc */
       width: -moz-available; /* moz */
       width: -webkit-fill-available; /* chrome */
+      position: relative;
     }
     .headericon {
       display: inline;
@@ -180,13 +185,13 @@
         </div>
         <div class="tank party">
           <div id="tankTwo" class="cooldownTiming">
-            <div class="cooldownTimingColumn"></div>
-            <div class="cooldownTimingColumn"></div>
-            <div class="cooldownTimingColumn"></div>
-            <div class="cooldownTimingColumn"></div>
-            <div class="cooldownTimingColumn"></div>
-            <div class="cooldownTimingColumn"></div>
-            <div class="cooldownTimingColumn"></div>
+            <div id="tankTwoOne" ondblclick="columnDblclick(event, this)" class="cooldownTimingColumn"></div>
+            <div id="tankTwoTwo" ondblclick="columnDblclick(event, this)" class="cooldownTimingColumn"></div>
+            <div id="tankTwoThree" ondblclick="columnDblclick(event, this)" class="cooldownTimingColumn"></div>
+            <div id="tankTwoFour" ondblclick="columnDblclick(event, this)" class="cooldownTimingColumn"></div>
+            <div id="tankTwoFive" ondblclick="columnDblclick(event, this)" class="cooldownTimingColumn"></div>
+            <div id="tankTwoSix" ondblclick="columnDblclick(event, this)" class="cooldownTimingColumn"></div>
+            <div id="tankTwoSeven" ondblclick="columnDblclick(event, this)" class="cooldownTimingColumn"></div>
           </div>
         </div>
         <div class="healer party">
@@ -194,35 +199,60 @@
         <div class="healer party">
         </div>
         <div class="dps party">
-          <div class="draggable" oncontextmenu="dragRightClick(this); return false;">Draggable Element 1</div>
-          <div class="draggable" oncontextmenu="dragRightClick(this); return false;">Draggable Element 3</div>
         </div>
         <div class="dps party">
         </div>
         <div class="dps party">
         </div>
         <div class="dps party">
-          <div class="draggable" oncontextmenu="dragRightClick(this); return false;">Draggable Element 2</div>
         </div>
       </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/interactjs/dist/interact.min.js"></script>
     <script>
       function dragRightClick(el) {
-        console.log("you did a double click", el);
         el.parentNode.removeChild(el);
       }
 
       function columnDblclick(ev, el) {
-        console.log("you did a column douyble click", ev, el);
         var frag = document.createDocumentFragment();
         temp = document.createElement('div');
         temp.className = "draggable";
         temp.style = "transform: translate(0px, " + ev.layerY + "px);";
         temp.setAttribute('data-x', 0);
         temp.setAttribute('data-y', ev.layerY);
-        temp.innerHTML = "1";
         temp.oncontextmenu = function(){ dragRightClick(this); return false; };
+
+        switch (el.id) {
+          case "tankOneOne":
+            temp.innerHTML = '<img src="./icons/GNB/aurora.png" alt="Aurora" class=headericon >';
+            break;
+          case "tankOneTwo":
+            temp.innerHTML = '<img src="./icons/GNB/camouflage.png" alt="Camouflage" class=headericon >';
+            break;
+          case "tankOneThree":
+            temp.innerHTML = '<img src="./icons/GNB/heart_of_light.png" alt="Heart of Light" class=headericon >';
+            break;
+          case "tankOneFour":
+            temp.innerHTML = '<img src="./icons/GNB/heart_of_stone.png" alt="Heart of Stone" class=headericon >';
+            break;
+          case "tankOneFive":
+            temp.innerHTML = '<img src="./icons/GNB/nebula.png" alt="Nebula" class=headericon >';
+            break;
+          case "tankOneSix":
+            temp.innerHTML = '<img src="./icons/GNB/rampart.png" alt="Rampart" class=headericon >';
+            break;
+          case "tankOneSeven":
+            temp.innerHTML = '<img src="./icons/GNB/reprisal.png" alt="Reprisal" class=headericon >';
+            break;
+          case "tankOneEight":
+            temp.innerHTML = '<img src="./icons/GNB/superbolide.png" alt="superbolide" class=headericon >';
+            break;
+          default:
+            temp.innerHTML = '<img src="./icons/GNB/aurora.png" alt="Aurora" class=headericon >';
+            break;
+        }
+
         el.appendChild(temp);
       }
 

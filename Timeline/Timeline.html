@@ -164,20 +164,35 @@
         </div>
       </div>
       <div class="dps party label">
-        <div style="display: inline; vertical-align: middle;"><img src="./icons/NIN/job.png" alt="NIN" style="display: inline; width: 1em;" ></div>
-        <div style="display: inline;"> Ninja </div>
+        <div class="labelname"><img src="./icons/NIN/job.png" alt="NIN" style="display: inline; width: 1em;" > Ninja </div>
+        <div class="cooldowns">
+          <img src="./icons/NIN/feint.png" alt="Feint" class=headericon >
+          <img src="./icons/NIN/trick_attack.png" alt="Trick Attack" class=headericon >
+        </div>
       </div>
       <div class="dps party label">
-        <div style="display: inline; vertical-align: middle;"><img src="./icons/DNC/job.png" alt="DNC" style="display: inline; width: 1em;" ></div>
-        <div style="display: inline;"> Dancer </div>
+        <div class="labelname"><img src="./icons/DNC/job.png" alt="DNC" style="display: inline; width: 1em;" > Dancer </div>
+        <div class="cooldowns">
+          <img src="./icons/DNC/curing_waltz.png" alt="Curing Waltz" class=headericon >
+          <img src="./icons/DNC/devilment.png" alt="Devilment" class=headericon >
+          <img src="./icons/DNC/improvisation.png" alt="Improvisation" class=headericon >
+          <img src="./icons/DNC/shield_samba.png" alt="Shield Samba" class=headericon >
+          <img src="./icons/DNC/technical_step.png" alt="Technical Step" class=headericon >
+        </div>
       </div>
       <div class="dps party label">
-        <div style="display: inline; vertical-align: middle;"><img src="./icons/SMN/job.png" alt="SMN" style="display: inline; width: 1em;" ></div>
-        <div style="display: inline;"> Summoner </div>
+        <div class="labelname"><img src="./icons/SMN/job.png" alt="SMN" style="display: inline; width: 1em;" > Summoner </div>
+        <div class="cooldowns">
+          <img src="./icons/SMN/addle.png" alt="Addle" class=headericon >
+          <img src="./icons/SMN/devotion.png" alt="Devotion" class=headericon >
+        </div>
       </div>
       <div class="dps party label">
-        <div style="display: inline; vertical-align: middle;"><img src="./icons/BLM/job.png" alt="BLM" style="display: inline; width: 1em;" ></div>
-        <div style="display: inline;"> Black Mage </div>
+        <div class="labelname"><img src="./icons/BLM/job.png" alt="BLM" style="display: inline; width: 1em;" > Black Mage </div>
+        <div class="cooldowns">
+          <img src="./icons/BLM/addle.png" alt="Addle" class=headericon >
+          <img src="./icons/BLM/ley_lines.png" alt="Ley Lines" class=headericon >
+        </div>
       </div>
     </div>
     <div class="scrollcontent">
@@ -229,12 +244,31 @@
           </div>
         </div>
         <div class="dps party">
+          <div id="dpsOne" class="cooldownTiming">
+            <div id="dpsOneOne" ondblclick="columnDblclick(event, this)" class="cooldownTimingColumn"></div>
+            <div id="dpsOneTwo" ondblclick="columnDblclick(event, this)" class="cooldownTimingColumn"></div>
+          </div>
         </div>
         <div class="dps party">
+          <div id="dpsTwo" class="cooldownTiming">
+            <div id="dpsTwoOne" ondblclick="columnDblclick(event, this)" class="cooldownTimingColumn"></div>
+            <div id="dpsTwoTwo" ondblclick="columnDblclick(event, this)" class="cooldownTimingColumn"></div>
+            <div id="dpsTwoThree" ondblclick="columnDblclick(event, this)" class="cooldownTimingColumn"></div>
+            <div id="dpsTwoFour" ondblclick="columnDblclick(event, this)" class="cooldownTimingColumn"></div>
+            <div id="dpsTwoFive" ondblclick="columnDblclick(event, this)" class="cooldownTimingColumn"></div>
+          </div>
         </div>
         <div class="dps party">
+          <div id="dpsThree" class="cooldownTiming">
+            <div id="dpsThreeOne" ondblclick="columnDblclick(event, this)" class="cooldownTimingColumn"></div>
+            <div id="dpsThreeTwo" ondblclick="columnDblclick(event, this)" class="cooldownTimingColumn"></div>
+          </div>
         </div>
         <div class="dps party">
+          <div id="dpsFour" class="cooldownTiming">
+            <div id="dpsFourOne" ondblclick="columnDblclick(event, this)" class="cooldownTimingColumn"></div>
+            <div id="dpsFourTwo" ondblclick="columnDblclick(event, this)" class="cooldownTimingColumn"></div>
+          </div>
         </div>
       </div>
     </div>
@@ -436,6 +470,81 @@
             var cooldown = 60;
             temp.innerHTML = '<div style="background: linear-gradient(180deg, ' + durationColor + ', ' + durationColor + ' '+ (lineSize * duration) +'em, ' + cooldownColor + ' ' + (lineSize * duration) + 'em, '
               + cooldownColor + ' '+ (lineSize * cooldown) +'em); height: ' + (lineSize * cooldown) + 'em;"><img src="./icons/WHM/tetragrammaton.png" alt="Tetragrammaton" class=headericon ></div>';
+            break;
+
+          // NIN
+          case "dpsOneOne":
+            var duration = 10;
+            var cooldown = 90;
+            temp.innerHTML = '<div style="background: linear-gradient(180deg, ' + durationColor + ', ' + durationColor + ' '+ (lineSize * duration) +'em, ' + cooldownColor + ' ' + (lineSize * duration) + 'em, '
+              + cooldownColor + ' '+ (lineSize * cooldown) +'em); height: ' + (lineSize * cooldown) + 'em;"><img src="./icons/NIN/feint.png" alt="Feint" class=headericon ></div>';
+            break;
+          case "dpsOneTwo":
+            var duration = 15;
+            var cooldown = 60;
+            temp.innerHTML = '<div style="background: linear-gradient(180deg, ' + durationColor + ', ' + durationColor + ' '+ (lineSize * duration) +'em, ' + cooldownColor + ' ' + (lineSize * duration) + 'em, '
+              + cooldownColor + ' '+ (lineSize * cooldown) +'em); height: ' + (lineSize * cooldown) + 'em;"><img src="./icons/NIN/trick_attack.png" alt="Trick Attack" class=headericon ></div>';
+            break;
+
+          // DNC
+          case "dpsTwoOne":
+            var duration = 0;
+            var cooldown = 60;
+            temp.innerHTML = '<div style="background: linear-gradient(180deg, ' + durationColor + ', ' + durationColor + ' '+ (lineSize * duration) +'em, ' + cooldownColor + ' ' + (lineSize * duration) + 'em, '
+              + cooldownColor + ' '+ (lineSize * cooldown) +'em); height: ' + (lineSize * cooldown) + 'em;"><img src="./icons/DNC/curing_waltz.png" alt="Curing Waltz" class=headericon ></div>';
+            break;
+          case "dpsTwoTwo":
+            var duration = 20;
+            var cooldown = 120;
+            temp.innerHTML = '<div style="background: linear-gradient(180deg, ' + durationColor + ', ' + durationColor + ' '+ (lineSize * duration) +'em, ' + cooldownColor + ' ' + (lineSize * duration) + 'em, '
+              + cooldownColor + ' '+ (lineSize * cooldown) +'em); height: ' + (lineSize * cooldown) + 'em;"><img src="./icons/DNC/Devilment.png" alt="Devilment" class=headericon ></div>';
+            break;
+          case "dpsTwoThree":
+            var duration = 15;
+            var cooldown = 120;
+            temp.innerHTML = '<div style="background: linear-gradient(180deg, ' + durationColor + ', ' + durationColor + ' '+ (lineSize * duration) +'em, ' + cooldownColor + ' ' + (lineSize * duration) + 'em, '
+              + cooldownColor + ' '+ (lineSize * cooldown) +'em); height: ' + (lineSize * cooldown) + 'em;"><img src="./icons/DNC/improvisation.png" alt="Improvisation" class=headericon ></div>';
+            break;
+          case "dpsTwoFour":
+            var duration = 15;
+            var cooldown = 120;
+            temp.innerHTML = '<div style="background: linear-gradient(180deg, ' + durationColor + ', ' + durationColor + ' '+ (lineSize * duration) +'em, ' + cooldownColor + ' ' + (lineSize * duration) + 'em, '
+              + cooldownColor + ' '+ (lineSize * cooldown) +'em); height: ' + (lineSize * cooldown) + 'em;"><img src="./icons/DNC/shield_samba.png" alt="Shield Samba" class=headericon ></div>';
+            break;
+          case "dpsTwoFive":
+            var duration = 15;
+            var durationTwo = 20 + duration;
+            var cooldown = 120;
+            temp.innerHTML = '<div style="background: linear-gradient(180deg, ' + durationColor + ', ' + durationColor + ' '+ (lineSize * duration) +'em, ' + durationTwoColor + ' ' + (lineSize * duration) + 'em, '  + durationTwoColor + ' ' + (lineSize * durationTwo) + 'em, '
+              + cooldownColor + ' ' + (lineSize * durationTwo) + 'em, ' + cooldownColor + ' '+ (lineSize * cooldown) +'em); height: ' + (lineSize * cooldown) + 'em;"><img src="./icons/DNC/technical_step.png" alt="Technical Step" class=headericon ></div>';
+            break;
+
+          // SMN
+          case "dpsThreeOne":
+            var duration = 10;
+            var cooldown = 90;
+            temp.innerHTML = '<div style="background: linear-gradient(180deg, ' + durationColor + ', ' + durationColor + ' '+ (lineSize * duration) +'em, ' + cooldownColor + ' ' + (lineSize * duration) + 'em, '
+              + cooldownColor + ' '+ (lineSize * cooldown) +'em); height: ' + (lineSize * cooldown) + 'em;"><img src="./icons/SMN/addle.png" alt="Addle" class=headericon ></div>';
+            break;
+          case "dpsThreeTwo":
+            var duration = 15;
+            var cooldown = 180;
+            temp.innerHTML = '<div style="background: linear-gradient(180deg, ' + durationColor + ', ' + durationColor + ' '+ (lineSize * duration) +'em, ' + cooldownColor + ' ' + (lineSize * duration) + 'em, '
+              + cooldownColor + ' '+ (lineSize * cooldown) +'em); height: ' + (lineSize * cooldown) + 'em;"><img src="./icons/SMN/devotion.png" alt="Devotion" class=headericon ></div>';
+            break;
+
+          // BLM
+          case "dpsFourOne":
+            var duration = 10;
+            var cooldown = 90;
+            temp.innerHTML = '<div style="background: linear-gradient(180deg, ' + durationColor + ', ' + durationColor + ' '+ (lineSize * duration) +'em, ' + cooldownColor + ' ' + (lineSize * duration) + 'em, '
+              + cooldownColor + ' '+ (lineSize * cooldown) +'em); height: ' + (lineSize * cooldown) + 'em;"><img src="./icons/BLM/addle.png" alt="Addle" class=headericon ></div>';
+            break;
+          case "dpsFourTwo":
+            var duration = 30;
+            var cooldown = 90;
+            temp.innerHTML = '<div style="background: linear-gradient(180deg, ' + durationColor + ', ' + durationColor + ' '+ (lineSize * duration) +'em, ' + cooldownColor + ' ' + (lineSize * duration) + 'em, '
+              + cooldownColor + ' '+ (lineSize * cooldown) +'em); height: ' + (lineSize * cooldown) + 'em;"><img src="./icons/BLM/ley_lines.png" alt="Ley Lines" class=headericon ></div>';
             break;
 
           default:

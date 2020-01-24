@@ -223,30 +223,61 @@
         temp.setAttribute('data-y', ev.layerY);
         temp.oncontextmenu = function(){ dragRightClick(this); return false; };
 
+        var lineSize = 1.19; // yuck
+        var durationColor = "#F89B1F" //"#F89B1F";
+        var durationTwoColor = "#E86A1C";
+        var cooldownColor = "#817F7F"; // B56051
+        var borderColor = "#817F7F";
+
         switch (el.id) {
           case "tankOneOne":
-            temp.innerHTML = '<img src="./icons/GNB/aurora.png" alt="Aurora" class=headericon >';
+            var duration = 18;
+            var cooldown = 60;
+            temp.innerHTML = '<div style="background: linear-gradient(180deg, ' + durationColor + ', ' + durationColor + ' '+ (lineSize * duration) +'em, ' + cooldownColor + ' ' + (lineSize * duration) + 'em, '
+              + cooldownColor + ' '+ (lineSize * cooldown) +'em); height: ' + (lineSize * cooldown) + 'em;"><img src="./icons/GNB/aurora.png" alt="Aurora" class=headericon ></div>';
             break;
           case "tankOneTwo":
-            temp.innerHTML = '<img src="./icons/GNB/camouflage.png" alt="Camouflage" class=headericon >';
+            var duration = 20;
+            var cooldown = 90;
+            temp.innerHTML = '<div style="background: linear-gradient(180deg, ' + durationColor + ', ' + durationColor + ' '+ (lineSize * duration) +'em, ' + cooldownColor + ' ' + (lineSize * duration) + 'em, '
+              + cooldownColor + ' '+ (lineSize * cooldown) +'em); height: ' + (lineSize * cooldown) + 'em;"><img src="./icons/GNB/camouflage.png" alt="Camouflage" class=headericon ></div>';
             break;
           case "tankOneThree":
-            temp.innerHTML = '<img src="./icons/GNB/heart_of_light.png" alt="Heart of Light" class=headericon >';
+            var duration = 15;
+            var cooldown = 90;
+            temp.innerHTML = '<div style="background: linear-gradient(180deg, ' + durationColor + ', ' + durationColor + ' '+ (lineSize * duration) +'em, ' + cooldownColor + ' ' + (lineSize * duration) + 'em, '
+              + cooldownColor + ' '+ (lineSize * cooldown) +'em); height: ' + (lineSize * cooldown) + 'em;"><img src="./icons/GNB/heart_of_light.png" alt="Heart of Light" class=headericon ></div>';
             break;
           case "tankOneFour":
-            temp.innerHTML = '<img src="./icons/GNB/heart_of_stone.png" alt="Heart of Stone" class=headericon >';
+            var duration = 7;
+            var durationTwo = 10;
+            var cooldown = 25;
+            temp.innerHTML = '<div style="background: linear-gradient(180deg, ' + durationColor + ', ' + durationColor + ' '+ (lineSize * duration) +'em, ' + durationTwoColor + ' ' + (lineSize * duration) + 'em, '  + durationTwoColor + ' ' + (lineSize * durationTwo) + 'em, '
+              + cooldownColor + ' ' + (lineSize * durationTwo) + 'em, ' + cooldownColor + ' '+ (lineSize * cooldown) +'em); height: ' + (lineSize * cooldown) + 'em;"><img src="./icons/GNB/heart_of_stone.png" alt="Heart of Stone" class=headericon ></div>';
             break;
           case "tankOneFive":
-            temp.innerHTML = '<img src="./icons/GNB/nebula.png" alt="Nebula" class=headericon >';
+            var duration = 15;
+            var cooldown = 120;
+            temp.innerHTML = '<div style="background: linear-gradient(180deg, ' + durationColor + ', ' + durationColor + ' '+ (lineSize * duration) +'em, ' + cooldownColor + ' ' + (lineSize * duration) + 'em, '
+              + cooldownColor + ' '+ (lineSize * cooldown) +'em); height: ' + (lineSize * cooldown) + 'em;"><img src="./icons/GNB/nebula.png" alt="Nebula" class=headericon ></div>';
             break;
           case "tankOneSix":
-            temp.innerHTML = '<img src="./icons/GNB/rampart.png" alt="Rampart" class=headericon >';
+            var duration = 20;
+            var cooldown = 90;
+            temp.innerHTML = '<div style="background: linear-gradient(180deg, ' + durationColor + ', ' + durationColor + ' '+ (lineSize * duration) +'em, ' + cooldownColor + ' ' + (lineSize * duration) + 'em, '
+              + cooldownColor + ' '+ (lineSize * cooldown) +'em); height: ' + (lineSize * cooldown) + 'em;"><img src="./icons/GNB/rampart.png" alt="Rampart" class=headericon ></div>';
             break;
           case "tankOneSeven":
-            temp.innerHTML = '<img src="./icons/GNB/reprisal.png" alt="Reprisal" class=headericon >';
+            var duration = 10;
+            var cooldown = 60;
+            temp.innerHTML = '<div style="background: linear-gradient(180deg, ' + durationColor + ', ' + durationColor + ' '+ (lineSize * duration) +'em, ' + cooldownColor + ' ' + (lineSize * duration) + 'em, '
+              + cooldownColor + ' '+ (lineSize * cooldown) +'em); height: ' + (lineSize * cooldown) + 'em;"><img src="./icons/GNB/reprisal.png" alt="Reprisal" class=headericon ></div>';
             break;
           case "tankOneEight":
-            temp.innerHTML = '<img src="./icons/GNB/superbolide.png" alt="superbolide" class=headericon >';
+            var duration = 8;
+            var cooldown = 360;
+            temp.innerHTML = '<div style="background: linear-gradient(180deg, ' + durationColor + ', ' + durationColor + ' '+ (lineSize * duration) +'em, ' + cooldownColor + ' ' + (lineSize * duration) + 'em, '
+              + cooldownColor + ' '+ (lineSize * cooldown) +'em); height: ' + (lineSize * cooldown) + 'em;"><img src="./icons/GNB/superbolide.png" alt="superbolide" class=headericon ></div>';
             break;
           default:
             temp.innerHTML = '<img src="./icons/GNB/aurora.png" alt="Aurora" class=headericon >';

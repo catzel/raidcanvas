@@ -111,11 +111,36 @@
       width: -moz-available; /* moz */
       width: -webkit-fill-available; /* chrome */
     }
+    .buttonStrip {
+      display: flex;
+      justify-content: space-around;
+      flex: 1;
+    }
+    .saveButton {
+      color: #505739;
+      background-color: #eae0c2;
+      text-decoration: none;
+      border: 1px solid #333029;
+      border-radius: 5px;
+    }
+    .newButton {
+      color: #505739;
+      background-color: #eae0c2;
+      text-decoration: none;
+      border: 1px solid #333029;
+      border-radius: 5px;
+    }
     </style>
   </head>
   <body>
     <div class="header right">
-      <div class="label party">Timer</div>
+      <div class="label party">
+        <div class="labelname">Timer</div>
+        <div class="buttonStrip">
+          <button class="saveButton" onclick="saveButtonClick()">Save & Share</button>
+          <button class="newButton" onclick="newButtonClick()">New</button>
+        </div>
+      </div>
       <div class="tank party label">
         <div class="labelname"><img src="./icons/GNB/job.png" alt="GNB" style="display: inline; width: 1em;" > Gunbreaker </div>
         <div class="cooldowns">
@@ -275,7 +300,18 @@
       </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/interactjs/dist/interact.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script>
+      class Guid {
+        static newGuid() {
+          return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+            var r = Math.random() * 16 | 0,
+              v = c == 'x' ? r : (r & 0x3 | 0x8);
+            return v.toString(16);
+          });
+        }
+      }
+
       function dragRightClick(el) {
         el.parentNode.removeChild(el);
       }
@@ -577,6 +613,14 @@
         el.appendChild(temp);
       }
 
+      function saveButtonClick() {
+        window.location = window.location.href.split("?")[0] + "?id=" + Guid.newGuid();
+      }
+
+      function newButtonClick() {
+        window.location = window.location.href.split("?")[0];
+      }
+
       interact('.draggable').draggable({
         listeners: {
           start (event) {
@@ -605,7 +649,6 @@
       });
 
       var timeInSeconds = "-00:15<br><br><br><br><br>-00:10<br><br><br><br><br>-00:05<br>-00:04<br>-00:03<br>-00:02<br>-00:01<br><div style='position: absolute; left:0px; background: black; height: 1px; width: 100%;'></div>00:00";
-
       for(var i = 1; i <= 1080; i++) {
         timeInSeconds += "<br>";
         if (i == 140) {
@@ -627,8 +670,24 @@
           timeInSeconds += minutes.toString().padStart(2, '0') + ":" + seconds.toString().padStart(2, '0');
         }
       }
-
       document.getElementById("timer").innerHTML = timeInSeconds;
+
+      var urlParams = new URLSearchParams(window.location.search);
+      if (urlParams.has('id')){
+        $.ajax({
+          url: 'loadfile.php',
+          type: 'POST',
+          contentType: 'text/plain',
+          dataType: 'text',
+          success: function(data) {
+            alert('AJAX call was successful!');
+            alert('Data from the server' + data);
+          },
+          error: function() {
+            alert('There was some error performing the AJAX call!');
+          }
+        });
+      }
     </script>
   </body>
 </html>

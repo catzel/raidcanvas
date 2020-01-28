@@ -679,13 +679,14 @@
           type: 'POST',
           contentType: 'text/plain',
           dataType: 'json',
-          data: { 'id': urlParams.get('id')},
+          data: { 'guid': urlParams.get('id')},
           success: function(data) {
             alert('AJAX call was successful!');
             alert('Data from the server' + data);
           },
-          error: function() {
+          error: function(data) {
             alert('There was some error performing the AJAX call!');
+            alert('Error: ' + data);
           }
         });
       }

@@ -778,7 +778,7 @@
           url: 'savefile.php',
           type: 'POST',
           dataType: 'json',
-          data: { 'guid' : newGuid, 'savedata' : JSON.Stringify(newSave) },
+          data: { 'guid' : newGuid, 'savedata' : JSON.stringify(newSave) },
           success: function(data) {
             alert('AJAX call was successful!');
             if (!data.hasOwnProperty('success')) {

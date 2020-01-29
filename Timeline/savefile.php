@@ -9,9 +9,8 @@ if ($output && $output != $json) {
   $filetosave = fopen($filename, "w") or die(json_encode(array('success' => false, 'message' => "Unable to create/open file.")));
   fwrite($filetosave, $json) or die(json_encode(array('success' => false, 'message' => "Unable to write to file.")));
   fclose($filetosave) or die(json_encode(array('success' => false, 'message' => "Unable to close file.")));
-  echo "Successfully saved.";
+  echo json_encode(array('success' => true, 'message' => "Saved successfully."));
 } else {
-  echo json_encode(array('success' => false, 'message' => "Input is empty or invalid."));
+  exit(json_encode(array('success' => false, 'message' => "Input is empty or invalid.")));
 }
-
 ?>

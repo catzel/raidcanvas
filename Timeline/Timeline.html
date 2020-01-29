@@ -616,38 +616,6 @@
       function saveButtonClick() {
         var newGuid = Guid.newGuid();
 
-        /* EXAMPLE
-
-        {
-          "guid" : newGuid,
-          "createdon" : date,
-          "columns" : [
-            {
-              "jobid" : GNB,
-              "cooldowns" : {
-                [0, 67, 98, 687],
-                [],
-                [0, 89]
-              }
-            },
-            {
-              "jobid": PLD,
-              "cooldowns" : {
-                [8, 28, 79],
-                []
-              }
-            },
-            {},
-            {},
-            {},
-            {},
-            {},
-            {}
-          ]
-        }
-
-        */
-
         var newSave = {};
         newSave['guid'] = newGuid;
         newSave['createdon'] = new Date();
@@ -829,7 +797,7 @@
         lockAxis: 'y'
       });
 
-      var timeInSeconds = "-00:15<br><br><br><br><br>-00:10<br><br><br><br><br>-00:05<br>-00:04<br>-00:03<br>-00:02<br>-00:01<br><div style='position: absolute; left:0px; background: black; height: 1px; width: 100%;'></div>00:00";
+      var timeInSeconds = "-00:20<br><br><br><br><br>-00:15<br><br><br><br><br>-00:10<br><br><br><br><br>-00:05<br>-00:04<br>-00:03<br>-00:02<br>-00:01<br><div style='position: absolute; left:0px; background: black; height: 1px; width: 100%;'></div>00:00";
       for(var i = 1; i <= 1080; i++) {
         timeInSeconds += "<br>";
         if (i == 140) {

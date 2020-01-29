@@ -778,10 +778,10 @@
           url: 'savefile.php',
           type: 'POST',
           dataType: 'json',
-          data: { 'guid' : newGuid, 'savedata' : newSave },
+          data: { 'guid' : newGuid, 'savedata' : JSON.Stringify(newSave) },
           success: function(data) {
             alert('AJAX call was successful!');
-            if (empty(data['success'])) {
+            if (!data.hasOwnProperty('success')) {
               window.location = window.location.href.split("?")[0] + "?id=" + newGuid;
             }
             else {
@@ -862,7 +862,7 @@
           data: { 'guid': urlParams.get('id')},
           success: function(data) {
             alert('AJAX call was successful!');
-            if (empty(data['success'])) {
+            if (!data.hasOwnProperty('success')) {
               loadFileHelper(data);
             }
             else {

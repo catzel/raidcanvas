@@ -614,11 +614,192 @@
       }
 
       function saveButtonClick() {
-        window.location = window.location.href.split("?")[0] + "?id=" + Guid.newGuid();
+        var newGuid = Guid.newGuid();
+
+        /* EXAMPLE
+
+        {
+          "guid" : newGuid,
+          "createdon" : date,
+          "columns" : [
+            {
+              "jobid" : GNB,
+              "cooldowns" : {
+                [0, 67, 98, 687],
+                [],
+                [0, 89]
+              }
+            },
+            {
+              "jobid": PLD,
+              "cooldowns" : {
+                [8, 28, 79],
+                []
+              }
+            },
+            {},
+            {},
+            {},
+            {},
+            {},
+            {}
+          ]
+        }
+
+        */
+
+        var newSave = {};
+        newSave['guid'] = newGuid;
+        newSave['createdon'] = new Date();
+        newSave['columns'] = [{}, {}, {}, {}, {}, {}, {}, {}]; // Always party of 8, if missing columns will be empty
+
+        // I'll do this dynamically later. For now, it's quick and dirty.
+        newSave['columns'][0]["jobid"] = "GNB";
+        var elements = document.getElementById('tankOne').children;
+        newSave['columns'][0]["cooldowns"] = [];
+        for (var i = 0; i < elements.length; i++) {
+          var childElements = elements[i].children;
+          var columnCooldowns = [];
+          for (var j = 0; j < childElements.length; j++){
+            var currentY = childElements[j].getAttribute('data-y');
+            if (!isNaN(currentY)) {
+              columnCooldowns.push(currentY);
+            }
+          };
+          newSave['columns'][0]["cooldowns"].push(columnCooldowns);
+        };
+
+        newSave['columns'][1]["jobid"] = "PLD";
+        var elements = document.getElementById('tankTwo').children;
+        newSave['columns'][1]["cooldowns"] = [];
+        for (var i = 0; i < elements.length; i++) {
+          var childElements = elements[i].children;
+          var columnCooldowns = [];
+          for (var j = 0; j < childElements.length; j++){
+            var currentY = childElements[j].getAttribute('data-y');
+            if (!isNaN(currentY)) {
+              columnCooldowns.push(currentY);
+            }
+          };
+          newSave['columns'][1]["cooldowns"].push(columnCooldowns);
+        };
+
+        newSave['columns'][2]["jobid"] = "AST";
+        var elements = document.getElementById('healerOne').children;
+        newSave['columns'][2]["cooldowns"] = [];
+        for (var i = 0; i < elements.length; i++) {
+          var childElements = elements[i].children;
+          var columnCooldowns = [];
+          for (var j = 0; j < childElements.length; j++){
+            var currentY = childElements[j].getAttribute('data-y');
+            if (!isNaN(currentY)) {
+              columnCooldowns.push(currentY);
+            }
+          };
+          newSave['columns'][2]["cooldowns"].push(columnCooldowns);
+        };
+
+        newSave['columns'][3]["jobid"] = "WHM";
+        var elements = document.getElementById('healerTwo').children;
+        newSave['columns'][3]["cooldowns"] = [];
+        for (var i = 0; i < elements.length; i++) {
+          var childElements = elements[i].children;
+          var columnCooldowns = [];
+          for (var j = 0; j < childElements.length; j++){
+            var currentY = childElements[j].getAttribute('data-y');
+            if (!isNaN(currentY)) {
+              columnCooldowns.push(currentY);
+            }
+          };
+          newSave['columns'][3]["cooldowns"].push(columnCooldowns);
+        };
+
+        newSave['columns'][4]["jobid"] = "NIN";
+        var elements = document.getElementById('dpsOne').children;
+        newSave['columns'][4]["cooldowns"] = [];
+        for (var i = 0; i < elements.length; i++) {
+          var childElements = elements[i].children;
+          var columnCooldowns = [];
+          for (var j = 0; j < childElements.length; j++){
+            var currentY = childElements[j].getAttribute('data-y');
+            if (!isNaN(currentY)) {
+              columnCooldowns.push(currentY);
+            }
+          };
+          newSave['columns'][4]["cooldowns"].push(columnCooldowns);
+        };
+
+        newSave['columns'][5]["jobid"] = "MNK";
+        var elements = document.getElementById('dpsFive').children;
+        newSave['columns'][5]["cooldowns"] = [];
+        for (var i = 0; i < elements.length; i++) {
+          var childElements = elements[i].children;
+          var columnCooldowns = [];
+          for (var j = 0; j < childElements.length; j++){
+            var currentY = childElements[j].getAttribute('data-y');
+            if (!isNaN(currentY)) {
+              columnCooldowns.push(currentY);
+            }
+          };
+          newSave['columns'][5]["cooldowns"].push(columnCooldowns);
+        };
+
+        newSave['columns'][6]["jobid"] = "DNC";
+        var elements = document.getElementById('dpsTwo').children;
+        newSave['columns'][6]["cooldowns"] = [];
+        for (var i = 0; i < elements.length; i++) {
+          var childElements = elements[i].children;
+          var columnCooldowns = [];
+          for (var j = 0; j < childElements.length; j++){
+            var currentY = childElements[j].getAttribute('data-y');
+            if (!isNaN(currentY)) {
+              columnCooldowns.push(currentY);
+            }
+          };
+          newSave['columns'][6]["cooldowns"].push(columnCooldowns);
+        };
+
+        newSave['columns'][7]["jobid"] = "BLM";
+        var elements = document.getElementById('dpsFour').children;
+        newSave['columns'][7]["cooldowns"] = [];
+        for (var i = 0; i < elements.length; i++) {
+          var childElements = elements[i].children;
+          var columnCooldowns = [];
+          for (var j = 0; j < childElements.length; j++){
+            var currentY = childElements[j].getAttribute('data-y');
+            if (!isNaN(currentY)) {
+              columnCooldowns.push(currentY);
+            }
+          };
+          newSave['columns'][7]["cooldowns"].push(columnCooldowns);
+        };
+
+        $.ajax({
+          url: 'savefile.php',
+          type: 'POST',
+          dataType: 'json',
+          data: { 'guid' : newGuid, 'savedata' : newSave },
+          success: function(data) {
+            alert('AJAX call was successful!');
+            if (empty(data['success'])) {
+              window.location = window.location.href.split("?")[0] + "?id=" + newGuid;
+            }
+            else {
+              alert("Sucessful: " + data['success'] + "; Message: " + data['message']);
+            }
+          },
+          error: function(data) {
+            alert('An error occurred. Please report this and the id you are using.');
+          }
+        });
       }
 
       function newButtonClick() {
         window.location = window.location.href.split("?")[0];
+      }
+
+      function loadFileHelper(data) {
+
       }
 
       interact('.draggable').draggable({
@@ -681,11 +862,15 @@
           data: { 'guid': urlParams.get('id')},
           success: function(data) {
             alert('AJAX call was successful!');
-            alert('Data from the server' + data);
+            if (empty(data['success'])) {
+              loadFileHelper(data);
+            }
+            else {
+              alert("Sucessful: " + data['success'] + "; Message: " + data['message']);
+            }
           },
           error: function(data) {
-            alert('There was some error performing the AJAX call!');
-            alert('Error: ' + data);
+            alert('An error occurred. Please report this and the id you are using.');
           }
         });
       }

@@ -30,5 +30,4 @@ if (empty($guid)) {
     trigger_error("No file exists with ID $guid.", E_ERROR);
   }
 }
-
 ?>

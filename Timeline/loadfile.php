@@ -1,11 +1,11 @@
 <?php
 $guid = $_POST['guid'];
+$docRoot = $_SERVER['DOCUMENT_ROOT'];
 
 if (empty($guid)) {
-  echo json_encode(array('success' => false, 'message' => "No ID was provided: $guid"));
-  trigger_error("No ID was provided: $guid", E_ERROR);
+  die(json_encode(array('success' => false, 'message' => "No ID was provided: $guid")));
 } else {
-  $filename = "/Repository/$guid.json";
+  $filename = "$docRoot/savedata/$guid.json";
 
   if (file_exists($filename)) {
     $string = file_get_contents($filename);
@@ -22,12 +22,10 @@ if (empty($guid)) {
     }
 
     if ($parseError) {
-      echo json_encode(array('success' => false, 'message' => "File is empty or invalid."));
-      trigger_error("File is empty or invalid.", E_ERROR);
+      die(json_encode(array('success' => false, 'message' => "File is empty or invalid.")));
     }
   } else {
-    echo json_encode(array('success' => false, 'message' => "No file exists with ID $guid."));
-    trigger_error("No file exists with ID $guid.", E_ERROR);
+    die(json_encode(array('success' => false, 'message' => "No file exists with ID $guid.")));
   }
 }
 ?>

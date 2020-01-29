@@ -748,7 +748,6 @@
           dataType: 'json',
           data: { 'guid' : newGuid, 'savedata' : JSON.stringify(newSave) },
           success: function(data) {
-            alert('AJAX call was successful!');
             if (!data.hasOwnProperty('success') || data['success']) {
               window.location = window.location.href.split("?")[0] + "?id=" + newGuid;
             }
@@ -767,7 +766,105 @@
       }
 
       function loadFileHelper(data) {
+        var createdon = data['createdon'];
+        var guid = data['guid'];
+        var columns = data['columns'];
 
+        // GNB
+        var cooldowns = columns[0]['cooldowns'];
+        var elements = document.getElementById('tankOne').children;
+        var min = Math.min(cooldowns.length, elements.length);
+        for (var i = 0; i < min; i++) {
+          var thisColumn = elements[i];
+          var thisCooldowns = cooldowns[i];
+          for (var j = 0; j < thisCooldowns.length; j++) {
+            columnDblclick({ layerY : thisCooldowns[j] }, thisColumn);
+          }
+        }
+
+        // PLD
+        var cooldowns = columns[1]['cooldowns'];
+        var elements = document.getElementById('tankTwo').children;
+        var min = Math.min(cooldowns.length, elements.length);
+        for (var i = 0; i < min; i++) {
+          var thisColumn = elements[i];
+          var thisCooldowns = cooldowns[i];
+          for (var j = 0; j < thisCooldowns.length; j++) {
+            columnDblclick({ layerY : thisCooldowns[j] }, thisColumn);
+          }
+        }
+
+        // AST
+        var cooldowns = columns[2]['cooldowns'];
+        var elements = document.getElementById('healerOne').children;
+        var min = Math.min(cooldowns.length, elements.length);
+        for (var i = 0; i < min; i++) {
+          var thisColumn = elements[i];
+          var thisCooldowns = cooldowns[i];
+          for (var j = 0; j < thisCooldowns.length; j++) {
+            columnDblclick({ layerY : thisCooldowns[j] }, thisColumn);
+          }
+        }
+
+        // WHM
+        var cooldowns = columns[3]['cooldowns'];
+        var elements = document.getElementById('healerTwo').children;
+        var min = Math.min(cooldowns.length, elements.length);
+        for (var i = 0; i < min; i++) {
+          var thisColumn = elements[i];
+          var thisCooldowns = cooldowns[i];
+          for (var j = 0; j < thisCooldowns.length; j++) {
+            columnDblclick({ layerY : thisCooldowns[j] }, thisColumn);
+          }
+        }
+
+        // NIN
+        var cooldowns = columns[4]['cooldowns'];
+        var elements = document.getElementById('dpsOne').children;
+        var min = Math.min(cooldowns.length, elements.length);
+        for (var i = 0; i < min; i++) {
+          var thisColumn = elements[i];
+          var thisCooldowns = cooldowns[i];
+          for (var j = 0; j < thisCooldowns.length; j++) {
+            columnDblclick({ layerY : thisCooldowns[j] }, thisColumn);
+          }
+        }
+
+        // MNK
+        var cooldowns = columns[5]['cooldowns'];
+        var elements = document.getElementById('dpsFive').children;
+        var min = Math.min(cooldowns.length, elements.length);
+        for (var i = 0; i < min; i++) {
+          var thisColumn = elements[i];
+          var thisCooldowns = cooldowns[i];
+          for (var j = 0; j < thisCooldowns.length; j++) {
+            columnDblclick({ layerY : thisCooldowns[j] }, thisColumn);
+          }
+        }
+
+        // DNC
+        var cooldowns = columns[6]['cooldowns'];
+        var elements = document.getElementById('dpsTwo').children;
+        var min = Math.min(cooldowns.length, elements.length);
+        for (var i = 0; i < min; i++) {
+          var thisColumn = elements[i];
+          var thisCooldowns = cooldowns[i];
+          for (var j = 0; j < thisCooldowns.length; j++) {
+            columnDblclick({ layerY : thisCooldowns[j] }, thisColumn);
+          }
+        }
+
+        // BLM
+        var cooldowns = columns[7]['cooldowns'];
+        var elements = document.getElementById('dpsFour').children;
+        var min = Math.min(cooldowns.length, elements.length);
+        for (var i = 0; i < min; i++) {
+          var thisColumn = elements[i];
+          var thisCooldowns = cooldowns[i];
+          for (var j = 0; j < thisCooldowns.length; j++) {
+            columnDblclick({ layerY : thisCooldowns[j] }, thisColumn);
+          }
+        }
       }
 
       interact('.draggable').draggable({
@@ -829,7 +926,6 @@
           dataType: 'json',
           data: { 'guid': urlParams.get('id')},
           success: function(data) {
-            alert('AJAX call was successful!');
             if (!data.hasOwnProperty('success') || data['success']) {
               loadFileHelper(data);
             }

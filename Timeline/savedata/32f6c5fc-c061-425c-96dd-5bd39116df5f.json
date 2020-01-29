@@ -1,0 +1,89 @@
+{
+  "guid": "32f6c5fc-c061-425c-96dd-5bd39116df5f",
+  "createdon": "2020-01-29T06:18:09.122Z",
+  "columns": [
+    {
+      "jobid": "GNB",
+      "cooldowns": [
+        [],
+        [],
+        [],
+        [
+          "86"
+        ],
+        [],
+        [],
+        [],
+        []
+      ]
+    },
+    {
+      "jobid": "PLD",
+      "cooldowns": [
+        [],
+        [],
+        [],
+        [],
+        [],
+        [
+          "428"
+        ],
+        []
+      ]
+    },
+    {
+      "jobid": "AST",
+      "cooldowns": [
+        [],
+        [],
+        [],
+        [],
+        [],
+        []
+      ]
+    },
+    {
+      "ajobid": "WHM",
+      "cooldowns": [
+        [],
+        [],
+        [],
+        [],
+        [],
+        []
+      ]
+    },
+    {
+      "jobid": "NIN",
+      "cooldowns": [
+        [],
+        []
+      ]
+    },
+    {
+      "jobid": "MNK",
+      "cooldowns": [
+        [],
+        [],
+        []
+      ]
+    },
+    {
+      "jobid": "DNC",
+      "cooldowns": [
+        [],
+        [],
+        [],
+        [],
+        []
+      ]
+    },
+    {
+      "jobid": "BLM",
+      "cooldowns": [
+        [],
+        []
+      ]
+    }
+  ]
+}
